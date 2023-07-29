@@ -26,8 +26,8 @@ let ProductsService = class ProductsService {
         const product = this.findProduct(prodId);
         return product;
     }
-    updateProduct(prodId, prodTitle, prodDesc, prodPrice) {
-        const product = this.findProduct(prodId);
+    async updateProduct(prodId, prodTitle, prodDesc, prodPrice) {
+        const product = await this.findProduct(prodId);
         if (product) {
             product.title = prodTitle;
             product.desc = prodDesc;
@@ -36,9 +36,9 @@ let ProductsService = class ProductsService {
         return product;
     }
     findProduct(prodId) {
-        const product = this.products.find(prod => prod.id == prodId);
+        const product = this.products.find((prod) => prod.id == prodId);
         if (!product) {
-            throw new common_1.NotFoundException('Could not found product!');
+            throw new common_1.NotFoundException("Could not found product!");
         }
         return product;
     }

@@ -18,7 +18,7 @@ ProductsModule = __decorate([
     (0, common_1.Module)({
         controllers: [products_controller_1.ProductController],
         providers: [products_service_1.ProductsService],
-        imports: [typeorm_module_1.TypeOrmModule.forFeature([product_model_1.Product])]
+        imports: [typeorm_module_1.TypeOrmModule.forFeature([product_model_1.Product])],
     })
 ], ProductsModule);
 exports.ProductsModule = ProductsModule;

@@ -36,9 +36,9 @@ let ProductController = class ProductController {
 };
 __decorate([
     (0, common_1.Post)(),
-    __param(0, (0, common_1.Body)('title')),
-    __param(1, (0, common_1.Body)('desc')),
-    __param(2, (0, common_1.Body)('price')),
+    __param(0, (0, common_1.Body)("title")),
+    __param(1, (0, common_1.Body)("desc")),
+    __param(2, (0, common_1.Body)("price")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, String, Number]),
     __metadata("design:returntype", void 0)
@@ -50,24 +50,24 @@ __decorate([
     __metadata("design:returntype", Array)
 ], ProductController.prototype, "getAllProducts", null);
 __decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Get)(":id"),
+    __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], ProductController.prototype, "getProduct", null);
 __decorate([
-    (0, common_1.Patch)(':id'),
-    __param(0, (0, common_1.Body)('id')),
-    __param(1, (0, common_1.Body)('title')),
-    __param(2, (0, common_1.Body)('desc')),
-    __param(3, (0, common_1.Body)('price')),
+    (0, common_1.Patch)(":id"),
+    __param(0, (0, common_1.Body)("id")),
+    __param(1, (0, common_1.Body)("title")),
+    __param(2, (0, common_1.Body)("desc")),
+    __param(3, (0, common_1.Body)("price")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, String, String, Number]),
     __metadata("design:returntype", void 0)
 ], ProductController.prototype, "updateProduct", null);
 ProductController = __decorate([
-    (0, common_1.Controller)('products'),
+    (0, common_1.Controller)("products"),
     __metadata("design:paramtypes", [products_service_1.ProductsService])
 ], ProductController);
 exports.ProductController = ProductController;

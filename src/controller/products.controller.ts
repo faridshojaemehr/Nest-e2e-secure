@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post, Param, Patch } from "@nestjs/common";
-import { Product } from "./product.model";
-import { ProductsService } from "./products.service";
+import { Product } from "../models/product.model";
+import { ProductsService } from "../service/products.service";
 
 @Controller("products")
 export class ProductController {
