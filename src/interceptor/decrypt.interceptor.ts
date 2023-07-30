@@ -9,17 +9,14 @@ import { map } from "rxjs/operators";
 import * as CryptoJS from "crypto-js";
 
 @Injectable()
-export class EncryptInterceptor implements NestInterceptor {
+export class DecryptInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     return next.handle().pipe(
-      map((data) => {
-        const jsonData = JSON.stringify(data);
-        const encryptedData = CryptoJS.AES.encrypt(
-          jsonData,
-          "YOUR_SECRET_KEY"
-        ).toString();
+      map((encryptedData) => {
+        const bytes = CryptoJS.AES.decrypt(encryptedData, "YOUR_SECRET_KEY");
+        const decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
 
-        return encryptedData;
+        return decryptedData;
       })
     );
   }

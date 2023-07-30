@@ -11,7 +11,7 @@ export class ProductController {
     @Body("title") prodTitle: string,
     @Body("desc") prodDesc: string,
     @Body("price") prodPrice: number
-  ){
+  ) {
     const generatedId = this.productsService.insertProduct(
       prodTitle,
       prodDesc,
