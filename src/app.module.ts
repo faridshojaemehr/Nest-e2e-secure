@@ -4,6 +4,10 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { ProductsModule } from "./products/products.module";
 import { Product } from "./models/product.model";
+import { UserService } from "./service/users.service";
+import { APP_INTERCEPTOR } from "@nestjs/core";
+import { EncryptInterceptor } from "./interceptor/encrypt.interceptor";
+import { DecryptInterceptor } from "./interceptor/decryption.interceptor";
 
 @Module({
   imports: [
@@ -20,6 +24,17 @@ import { Product } from "./models/product.model";
     }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    UserService,
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: EncryptInterceptor,
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: DecryptInterceptor,
+    },
+  ],
 })
 export class AppModule {}

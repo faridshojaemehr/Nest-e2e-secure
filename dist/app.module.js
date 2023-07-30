@@ -12,6 +12,7 @@ const typeorm_1 = require("@nestjs/typeorm");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const products_module_1 = require("./products/products.module");
+const product_model_1 = require("./models/product.model");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -25,6 +26,7 @@ AppModule = __decorate([
                 username: "farid",
                 password: "123456",
                 database: "TFLogic",
+                entities: [product_model_1.Product],
                 synchronize: true,
             }),
         ],
