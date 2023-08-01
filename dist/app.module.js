@@ -13,6 +13,9 @@ const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const products_module_1 = require("./products/products.module");
 const product_model_1 = require("./models/product.model");
+const core_1 = require("@nestjs/core");
+const encrypt_interceptor_1 = require("./interceptor/encrypt.interceptor");
+const decrypt_interceptor_1 = require("./interceptor/decrypt.interceptor");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -23,15 +26,25 @@ AppModule = __decorate([
                 type: "postgres",
                 host: "localhost",
                 port: 5432,
-                username: "farid",
+                username: "admin",
                 password: "123456",
-                database: "TFLogic",
+                database: "secureDB",
                 entities: [product_model_1.Product],
                 synchronize: true,
             }),
         ],
         controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
+        providers: [
+            app_service_1.AppService,
+            {
+                provide: core_1.APP_INTERCEPTOR,
+                useClass: encrypt_interceptor_1.EncryptInterceptor,
+            },
+            {
+                provide: core_1.APP_INTERCEPTOR,
+                useClass: decrypt_interceptor_1.DecryptInterceptor,
+            },
+        ],
     })
 ], AppModule);
 exports.AppModule = AppModule;
